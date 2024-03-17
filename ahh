@@ -1,0 +1,25 @@
+#......................................................................
+#Simple txt read
+#Kohen Johnston
+#2023-03-17
+#......................................................................
+with open('data.txt', 'r') as file:
+    # Read the lines from the file
+    lines = file.readlines()
+
+# Print the contents of the file
+print("Contents of the file:")
+for line in lines:
+    print(line.strip())
+
+# Extracting information from the file
+info = {}
+for line in lines:
+    key, value = line.strip().split(': ')
+    info[key] = value
+
+# Interacting with the information
+print("\nInteracting with the information:")
+print("Name:", info['Name'])
+print("Age:", info['Age'])
+print("Occupation:", info['Occupation'])
