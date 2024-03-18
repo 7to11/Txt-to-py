@@ -3,10 +3,9 @@
 #Kohen Johnston
 #2023-03-17
 #......................................................................
-with open('data.txt', 'r') as file:
+with open('data.txt', 'r', encoding='utf-8') as file:
     # Read the lines from the file
     lines = file.readlines()
-
 # Print the contents of the file
 print("Contents of the file:")
 for line in lines:
@@ -15,11 +14,24 @@ for line in lines:
 # Extracting information from the file
 info = {}
 for line in lines:
-    key, value = line.strip().split(': ')
-    info[key] = value
+    parts = line.strip().split(': ')
+    if len(parts) == 2:
+        key, value = parts
+        info[key] = value
+    else:
+        print("Unexpected format in line:", line.strip())
 
 # Interacting with the information
 print("\nInteracting with the information:")
-print("Name:", info['Name'])
-print("Age:", info['Age'])
-print("Occupation:", info['Occupation'])
+if 'Name' in info:
+    print("Name:", info['Name'])
+else:
+    print("Name not found")
+if 'Age' in info:
+    print("Age:", info['Age'])
+else:
+    print("Age not found")
+if 'Occupation' in info:
+    print("Occupation:", info['Occupation'])
+else:
+    print("Occupation not found")
